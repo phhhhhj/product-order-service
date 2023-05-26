@@ -31,6 +31,7 @@ class ProductApiTest extends ApiTest {
 				.log().all().extract();
 
 		assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
+		System.out.println();
 	}
 
 	private AddProductRequest 상품등록요청_생성() {
