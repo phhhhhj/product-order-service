@@ -1,12 +1,26 @@
 package com.example.productorderservice.product;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.util.Assert;
 
+@Entity
+@Table(name = "products")
+@Getter
+@NoArgsConstructor
 class Product {
-	private final String name;
-	private final int price;
-	private final DiscountPolicy discountPolicy;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String name;
+	private int price;
+	private DiscountPolicy discountPolicy;
 
 	public Product(final String name, final int price, final DiscountPolicy discountPolicy) {
 		// validation
@@ -17,13 +31,5 @@ class Product {
 		this.name = name;
 		this.price = price;
 		this.discountPolicy = discountPolicy;
-	}
-
-	public void assignId(final Long id) {
-		this.id = id;
-	}
-
-	public Long getId() {
-		return id;
 	}
 }
